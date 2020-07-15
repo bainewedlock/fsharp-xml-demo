@@ -27,11 +27,13 @@ time for 1000 loops: 00:00:15.0232130
   <int>4</int>
   <int>5</int>
 </MyData>
+```
 
 <img src="readme-assets/memoryleak.png"/>
 
 ### naiveApproachFixed (fixed)
 time for 1000 loops: 00:00:00.0319149
+```
 <?xml version="1.0" encoding="utf-16"?>
 <MyData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <int>1</int>
@@ -40,6 +42,7 @@ time for 1000 loops: 00:00:00.0319149
   <int>4</int>
   <int>5</int>
 </MyData>
+```
 
 ## datacontractApproach
 time for 1000 loops: 00:00:00.1206794
