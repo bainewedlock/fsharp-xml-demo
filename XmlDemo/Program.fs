@@ -21,6 +21,12 @@ let naiveApproachWithCustomRootElement (ob:'a) =
     s.Serialize(writer, ob)
     writer.ToString()
 
+// requires: reference to System.Xml.Serialization
+let naiveApproachFixed (serializer:XmlSerializer) (ob:'a) =
+    use writer = new StringWriter()
+    serializer.Serialize(writer, ob)
+    writer.ToString()
+
 // requires: reference to System.Runtime.Serialization
 let datacontractApproach (ob:'a) =
     let ser = new DataContractSerializer(typeof<'a>)
@@ -60,10 +66,16 @@ let benchmark title callback =
     ]
     |> List.iter (printfn "%s")
 
+let cachedSerializer =
+    let root = XmlRootAttribute()
+    root.ElementName <- "MyData"
+    new XmlSerializer(typeof<int[]>, root)
+
 [<EntryPoint>]
 let main argv =
     benchmark "naiveApproach" naiveApproach
     benchmark "naiveApproachWithCustomRootElement" naiveApproachWithCustomRootElement
+    benchmark "naiveApproachFixed" (naiveApproachFixed cachedSerializer)
     benchmark "datacontractApproach" datacontractApproach
     benchmark "withPicklerLibrary" withPicklerLibrary
     0
