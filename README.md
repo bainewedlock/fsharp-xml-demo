@@ -31,7 +31,7 @@ time for 1000 loops: 00:00:15.0232130
 
 <img src="readme-assets/memoryleak.png"/>
 
-### naiveApproachFixed (fixed)
+## naiveApproachFixed (fixed)
 time for 1000 loops: 00:00:00.0319149
 ```
 <?xml version="1.0" encoding="utf-16"?>
